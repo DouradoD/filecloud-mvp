@@ -1,0 +1,5 @@
+{
+    "users": [
+        {"username": "John Doe","displayname":"", "email":"", "password ": "", "authtype ":1,"status":1}
+    ]
+}
