@@ -5,7 +5,7 @@ class Login(BaseService):
 
     def __init__(self, session, user_type, base_url: str):
         super().__init__(session, base_url)
-        self.endpoints = EndpointsLoader(user_type, "login").get_endpoints()
+        self.endpoints = EndpointsLoader(user_type).get_endpoints()["login"]
     
     def admin_login(self, username: str, password: str, headers: dict):
         return self.post(self.endpoints["login"], 

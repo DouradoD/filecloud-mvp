@@ -5,7 +5,7 @@ from services.admin.login import Login
 
 
 @pytest.fixture(scope="session")
-def config_and_login():
+def config_and_login_session():
     session = requests.session()
     config_loader = ConfigLoader("prod")
     config = config_loader.get_config()

@@ -4,7 +4,9 @@ class User(BaseService):
 
     def __init__(self, session, user_type: str, base_url: str):
         super().__init__(session, base_url)
-        self.endpoints = EndpointsLoader(user_type, "user").get_endpoints()
+        self.admin_service_info = EndpointsLoader(user_type).get_endpoints()
+        self.endpoint = self.admin_service_info['default_endpoint']
+        self.user_service = self.admin_service_info['user']
 
     def add_new_user(self, user_data: dict):
         """
@@ -14,13 +16,15 @@ class User(BaseService):
         user_data: Dictionary containing user data.
         :return: Response from the server.
         """
-        return self.post(data=user_data)
-    
+        operation = self.user_service['add_user']['operation']
+        params = {**{"op": operation}, **user_data}
+        return self.post(endpoint=self.endpoint, params=params)
+        
     def get_user(self, user_id: str):
         """
         Get user details.
         :param user_id: ID of the user to retrieve.
         :return: Response from the server.
         """
-        operation = self.endpoints['get_user']['operation']
-        return self.get(endpoint=self.endpoints["base_endpoint"], params={"op": operation,"username": user_id})
+        operation = self.user_service['get_user']['operation']
+        return self.post(endpoint=self.endpoint, params={"op": operation,"username": user_id})

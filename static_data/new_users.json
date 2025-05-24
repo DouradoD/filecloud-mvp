@@ -1,5 +1,22 @@
 {
     "users": [
-        {"username": "John Doe","displayname":"", "email":"", "password ": "", "authtype ":1,"status":1}
+        {
+            "username": "John Doe",
+            "displayname": "John Doe",
+            "email": "john_doe@gmail.com",
+            "password": "John$Doe",
+            "authtype": 1,
+            "status": 1,
+            "groups": ["group1", "group2"]
+        },
+        {
+            "username": "Jane Smith",
+            "displayname": "Jane Smith",
+            "email": "jane_smith@gmail.com",
+            "password": "Jane$Smith",
+            "authtype": 1,
+            "status": 1,
+            "groups": ["group2"]
+        }
     ]
 }

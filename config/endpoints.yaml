@@ -4,20 +4,21 @@ admin:
       operation: "adminlogin"
     logout:
       operation: "logout"
-    base_endpoint: "/admin"
 
   user:
     add_user:
       operation: "adduser"
     get_user: 
       operation: "getuser"
-    base_endpoint: "/admin"
-    
+        
   group:
-    add_group: "/admin/addgroup"
-    add_member_to_group: "/admin/addmembertogroup"
-    get_groups: "/admin/getgroups"
-  base_endpoint: "/admin/op={operation}"
+    add_group: 
+      operation: "addgroup"
+    add_member_to_group: 
+      operation: "addmembertogroup"
+    get_groups: 
+      operation: "getgroups"
+  default_endpoint: "/admin"
 
 guest:
   login:

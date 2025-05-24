@@ -5,7 +5,7 @@ class File(BaseService):
 
     def __init__(self, session, user_type, base_url: str):
         super().__init__(session, base_url)
-        self.endpoints = EndpointsLoader(user_type, "file").get_endpoints()
+        self.endpoints = EndpointsLoader(user_type).get_endpoints()[ "file"]
     
     def create_folder(self, path:str , headers: dict):
         return self.post(self.endpoints["create_folder"], 

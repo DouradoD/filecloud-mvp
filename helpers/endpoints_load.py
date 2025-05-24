@@ -2,9 +2,8 @@ import yaml
 import os
 
 class EndpointsLoader:
-    def __init__(self, user_type, service_name):
+    def __init__(self, user_type:str):
         self.user_type = user_type
-        self.service_name = service_name
         self.endpoint_file_path = f'config/endpoints.yaml'
         self.endpoints = self.load_endpoints()
 
@@ -18,4 +17,4 @@ class EndpointsLoader:
         return endpoints
 
     def get_endpoints(self):
-        return self.endpoints[self.user_type][self.service_name]
+        return self.endpoints[self.user_type]
