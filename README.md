@@ -121,7 +121,7 @@ filecloud-mvp/
 
 - To run the load test:(Windows - PowerShell)
 ```
-locust -f .\tests\guest\load_test\file_load_test.py --users 1000 --spawn-rate 20 --run-time 30m --csv=filecloud_load
+locust -f .\performance\load_test\load_test_upload_file.py --users 1000 --spawn-rate 20 --run-time 30m --csv=filecloud_load
 ```
 
 ## Notes
