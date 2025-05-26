@@ -1,6 +1,7 @@
 from services.admin.user import User
+from helpers.helpers import parse_xml_response
 import logging
-logging.basicConfig(level=logging.WARNING)
+
 
 
 def test_get_user(config_and_login_session):
@@ -8,9 +9,11 @@ def test_get_user(config_and_login_session):
     user = User(session=session, user_type=config['user_type'], base_url=config["base_url"])
     user_name = "diogoaugustodourado"
     response = user.get_user(user_name)
+    dict_data = parse_xml_response(response.text)
+
     assert response.status_code == 200
-    assert '<username>diogoaugustodourado</username>' in response.text
-    assert '<email>diogo.augusto.dourado@gmail.com</email>' in response.text
+    assert user_name == dict_data['users']['user']['username']
+    assert 'diogo.augusto.dourado@gmail.com' == dict_data['users']['user']['email']
 
 def test_add_new_user(config_and_login_session):
     config, session = config_and_login_session

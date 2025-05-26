@@ -18,6 +18,8 @@ admin:
       operation: "addmembertogroup"
     get_groups: 
       operation: "getgroups"
+    get_group_by_name: 
+      operation: "getgroupbyname"
   default_endpoint: "/admin"
 
 guest:
@@ -32,3 +34,7 @@ guest:
     upload_file: "/core/upload"
     get_file_info: "/core/fileinfo"
     download_file: "/core/downloadfile"
+    delete_file: "/core/deletefile"
+  versioning:
+    make_version_live: "/core/makeversionlive"
+    get_versions: "/core/getversions"
