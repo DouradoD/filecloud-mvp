@@ -9,7 +9,7 @@ def config_and_login_session():
     session = requests.session()
     config_loader = ConfigLoader("prod")
     config = config_loader.get_config()
-    config['user_type'] = "admin"=
+    config['user_type'] = "admin"
     login = Login(session, config['user_type'], config["base_url"])
     response = login.admin_login(username=config["userid"], password=config["password"]
                          ,headers={'Accept': 'application/json'})
