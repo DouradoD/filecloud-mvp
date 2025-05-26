@@ -116,6 +116,14 @@ filecloud-mvp/
 
 ---
 
+
+# Load test - Check the Upload API
+
+- To run the load test:(Windows - PowerShell)
+```
+locust -f .\tests\guest\load_test\file_load_test.py --users 1000 --spawn-rate 20 --run-time 30m --csv=filecloud_load
+```
+
 ## Notes
 
 - Update [new_users.json](http://_vscodecontentref_/3) with your user/group data for bulk operations.

@@ -76,3 +76,6 @@ Desktop.ini
 
 # Local configuration files
 config/test.yaml
+
+# csv files
+*.csv
