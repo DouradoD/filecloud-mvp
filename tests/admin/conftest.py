@@ -1,6 +1,5 @@
 import pytest
 import requests
-from helpers.config_load import ConfigLoader
 from services.admin.login import Login
 
 @pytest.fixture(scope="session")

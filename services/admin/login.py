@@ -21,11 +21,11 @@ class Login(BaseService):
         """
         operation = self.login_service['login']['operation']
         params = {"op": operation,"adminuser": username, "adminpassword": password}
-        return self.post(self.endpoint, params=params, headers=headers)
+        return self.post(self.endpoint, data=params, headers=headers)
 
     def admin_logout(self):
         """
         Log out the current guest user session.
         """
         operation = self.login_service['logout']['operation']
-        return self.post(self.endpoint, params={"op": operation})
+        return self.post(self.endpoint, data={"op": operation})

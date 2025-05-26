@@ -19,12 +19,12 @@ class BaseService:
         url = f"{self.base_url}{endpoint}"
         return self.session.get(url, cookies=cookies, headers=headers, params=params)
 
-    def post(self, endpoint: str, files=None, cookies: dict = None, headers: dict = None, params: dict = None, data: dict = None):
+    def post(self, endpoint: str, files=None, cookies: dict = None, headers: dict = None, data: dict = None):
         """
         Send a POST request to the given endpoint.
         """
         url = f"{self.base_url}{endpoint}"
-        return self.session.post(url, cookies=cookies, headers=headers, params=params, files=files, data=data)
+        return self.session.post(url, cookies=cookies, headers=headers, data=data, files=files)
 
     def put(self, endpoint: str, data: dict = None):
         """

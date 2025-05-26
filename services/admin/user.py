@@ -21,11 +21,11 @@ class User(BaseService):
         """
         operation = self.user_service['add_user']['operation']
         params = {**{"op": operation}, **user_data}
-        return self.post(endpoint=self.endpoint, params=params)
+        return self.post(endpoint=self.endpoint, data=params)
     
     def get_user(self, user_id: dict):
         """
         Add a new user to FileCloud.
         """
         operation = self.user_service['get_user']['operation']
-        return self.post(endpoint=self.endpoint, params={"op": operation,"username": user_id})
+        return self.post(endpoint=self.endpoint, data={"op": operation,"username": user_id})

@@ -17,4 +17,4 @@ class Versioning(BaseService):
         """
         Retrieve file versions for a given file.
         """
-        return self.post(self.endpoints["get_versions"], params=params)
+        return self.post(self.endpoints["get_versions"], data=params)

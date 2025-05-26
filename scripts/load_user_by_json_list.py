@@ -126,7 +126,7 @@ def login():
         tuple: (config, session)
     """
     session = requests.session()
-    config_loader = ConfigLoader("prod")
+    config_loader = ConfigLoader("test")
     config = config_loader.get_config()
     config['user_type'] = "admin"
     login = Login(session, config['user_type'], config["base_url"])

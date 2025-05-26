@@ -21,7 +21,7 @@ class Group(BaseService):
         """
         operation = self.group_service['add_group']['operation']
         params = {"op": operation, "groupname": group_name}
-        return self.post(endpoint=self.endpoint, params=params)
+        return self.post(endpoint=self.endpoint, data=params)
 
     def get_groups(self):
         """
@@ -44,4 +44,4 @@ class Group(BaseService):
         """
         operation = self.group_service['add_member_to_group']['operation']
         params = {"op": operation, "groupid": group_id, "userid": user_id}
-        return self.post(endpoint=self.endpoint, params=params)
+        return self.post(endpoint=self.endpoint, data=params)
