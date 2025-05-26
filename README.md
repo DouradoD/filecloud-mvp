@@ -78,6 +78,18 @@ filecloud-mvp/
 
 ---
 
+## Pre-setup - CONFIG
+Configure your environment:
+
+Option 1:
+Create a test.yaml file in the config folder, using the same structure as prod.yaml. Be sure to include your userid and password.
+
+Option 2:
+- To run tests and scripts with production settings:
+    - Edit prod.yaml and fill in your userid and password.
+    - When running, specify the environment with --env=prod (the default is --env=test).
+    - If you are running a script that uses ConfigLoader, update the line config_loader = ConfigLoader("test") to config_loader = ConfigLoader("prod") (or use your desired config file name).
+
 ## Running Tests
 
 - To run all tests:
@@ -131,4 +143,3 @@ locust -f .\performance\load_test\load_test_upload_file.py --users 1000 --spawn-
 - VS Code users can use [launch.json](http://_vscodecontentref_/5) for debugging and running scripts.
 
 ---
-
