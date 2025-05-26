@@ -73,3 +73,6 @@ Desktop.ini
 # Local env files
 .env
 .env.*
+
+# Local configuration files
+config/test.yaml
