@@ -94,8 +94,23 @@ filecloud-mvp/
 
 ## Running Scripts
 
-- To run the user/group loader script:
+- To run the user/group loader script:(Windows - PowerShell)
     ```sh
+    python -m scripts.load_user_by_json_list
+    ```
+    or 
+    ```sh
+    $env:PYTHONPATH = (Get-Location)
+    python scripts/load_user_by_json_list.py
+    ```
+
+- To run the user/group loader script: (Linux/Mac)
+    ```sh
+    python -m scripts.load_user_by_json_list
+    ```
+    or
+    ```sh
+    export PYTHONPATH=$(pwd)
     python scripts/load_user_by_json_list.py
     ```
 

@@ -129,9 +129,14 @@ def login():
     config_loader = ConfigLoader("prod")
     config = config_loader.get_config()
     config['user_type'] = "admin"
-    response = Login(session, config['user_type'], config["base_url"]
-                     ).admin_login(username=config["userid"], password=config["password"]
-                         ,headers={'Accept': 'application/json'})
+    login = Login(session, config['user_type'], config["base_url"])
+    if not config["userid"] or not config["password"]:
+        raise ValueError("Admin user ID and password must be set in the config file. In this case, in the config/prod.yaml file.")
+    response = login.admin_login(
+        username=config["userid"],
+        password=config["password"],
+        headers={'Accept': 'application/json'}
+    )
 
     assert response.status_code == 200
     if not response.json()['command'][0]['result'] == 1:

@@ -14,6 +14,14 @@ class Group(BaseService):
         self.admin_service_info = EndpointsLoader(user_type).get_endpoints()
         self.endpoint = self.admin_service_info['default_endpoint']
         self.group_service = self.admin_service_info['group']
+    
+    def add_new_group(self, group_name: str):
+        """
+        Add a new group to FileCloud.
+        """
+        operation = self.group_service['add_group']['operation']
+        params = {"op": operation, "groupname": group_name}
+        return self.post(endpoint=self.endpoint, params=params)
 
     def get_groups(self):
         """
