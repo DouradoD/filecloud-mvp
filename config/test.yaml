@@ -1,5 +1,4 @@
-base_url: "https://api.example.com"
-userid: "userid"
-password: "password"
-headers:
-  Accept: "application/json"
+base_url: "https://dourado.filecloudonline.com"
+userid: ""
+password: ""
+

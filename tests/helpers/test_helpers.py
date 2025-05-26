@@ -14,3 +14,7 @@ def test_read_json_file():
     
     # Assert that the result matches the expected data
     assert data is not None
+
+def test_others():
+    # Include other tests that might be relevant for the EndpointsLoader
+    pass

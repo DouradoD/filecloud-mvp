@@ -82,12 +82,12 @@ filecloud-mvp/
 
 - To run all tests:
     ```sh
-    pytest
+    pytest --env='test'
     ```
 
 - To run tests in a specific folder (e.g., admin):
     ```sh
-    pytest tests/admin
+    pytest tests/admin --env=test
     ```
 
 ---

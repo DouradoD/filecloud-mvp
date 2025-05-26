@@ -1,7 +1,6 @@
 import json
 import xmltodict
 
-
 def read_json_file(file_path):
     """
     Reads a JSON file and returns the data.
@@ -11,7 +10,18 @@ def read_json_file(file_path):
     return data
 
 def parse_xml_response(response):
-    """Standardize XML parsing with error handling"""
+    """
+    Standardize XML parsing with error handling.
+
+    Args:
+        response (str): XML response as a string.
+
+    Returns:
+        dict: Parsed XML as a dictionary.
+
+    Raises:
+        AssertionError: If the XML cannot be parsed.
+    """
     try:
         return xmltodict.parse(response)
     except Exception as e:
