@@ -18,10 +18,10 @@ class Login(BaseService):
         Log in as a guest user.
         """
         data = {"userid": username, "password": password}
-        return self.post(self.endpoints["admin_login"], data=data, headers=headers)
+        return self.post(self.endpoints["login"], data=data, headers=headers)
 
     def admin_logout(self):
         """
         Log out the current guest user session.
         """
-        return self.post(self.endpoints["admin_logout"])
+        return self.post(self.endpoints["logout"])

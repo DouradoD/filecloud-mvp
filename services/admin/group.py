@@ -11,22 +11,29 @@ class Group(BaseService):
         Initialize the Group service.
         """
         super().__init__(session, base_url)
-        self.endpoints = EndpointsLoader(user_type).get_endpoints()["group"]
+        self.admin_service_info = EndpointsLoader(user_type).get_endpoints()
+        self.endpoint = self.admin_service_info['default_endpoint']
+        self.group_service = self.admin_service_info['group']
 
     def get_groups(self):
         """
         Retrieve all groups.
         """
-        return self.get(self.endpoints["get_groups"])
+        operation = self.group_service['get_groups']['operation']
+        return self.get(endpoint=self.endpoint, params={"op": operation})
 
     def get_group_by_name(self, group_name: str):
         """
         Retrieve a group's details by name.
         """
-        return self.get(self.endpoints["get_group_by_name"], params={"groupname": group_name})
+        operation = self.group_service['get_group_by_name']['operation']
+        params = {"op": operation, "groupname": group_name}
+        return self.get(endpoint=self.endpoint, params=params)
 
-    def add_new_group(self, group_name: str):
+    def add_member_to_group(self, group_id : str, user_id: str):
         """
         Add a new group to FileCloud.
         """
-        return self.post(self.endpoints["add_new_group"], data={"groupname": group_name})
+        operation = self.group_service['add_member_to_group']['operation']
+        params = {"op": operation, "groupid": group_id, "userid": user_id}
+        return self.post(endpoint=self.endpoint, params=params)

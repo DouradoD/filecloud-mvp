@@ -6,22 +6,26 @@ class Login(BaseService):
     Service for guest user login operations in FileCloud.
     """
 
-    def __init__(self, session, user_type, base_url: str):
+    def __init__(self, session, user_type: str, base_url: str):
         """
         Initialize the Login service.
         """
         super().__init__(session, base_url)
-        self.endpoints = EndpointsLoader(user_type).get_endpoints()["login"]
+        self.admin_service_info = EndpointsLoader(user_type).get_endpoints()
+        self.endpoint = self.admin_service_info['default_endpoint']
+        self.login_service = self.admin_service_info['login']
 
     def admin_login(self, username: str, password: str, headers: dict):
         """
         Log in as a guest user.
         """
-        data = {"userid": username, "password": password}
-        return self.post(self.endpoints["admin_login"], data=data, headers=headers)
+        operation = self.login_service['login']['operation']
+        params = {"op": operation,"adminuser": username, "adminpassword": password}
+        return self.post(self.endpoint, params=params, headers=headers)
 
     def admin_logout(self):
         """
         Log out the current guest user session.
         """
-        return self.post(self.endpoints["admin_logout"])
+        operation = self.login_service['logout']['operation']
+        return self.post(self.endpoint, params={"op": operation})

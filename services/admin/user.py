@@ -6,21 +6,26 @@ class User(BaseService):
     Service for admin user management operations in FileCloud.
     """
 
-    def __init__(self, session, user_type, base_url: str):
+    def __init__(self, session, user_type: str, base_url: str):
         """
         Initialize the User service.
         """
         super().__init__(session, base_url)
-        self.endpoints = EndpointsLoader(user_type).get_endpoints()["user"]
-
-    def get_user(self, username: str):
-        """
-        Retrieve a user's details by username.
-        """
-        return self.get(self.endpoints["get_user"], params={"username": username})
+        self.admin_service_info = EndpointsLoader(user_type).get_endpoints()
+        self.endpoint = self.admin_service_info['default_endpoint']
+        self.user_service = self.admin_service_info['user']
 
     def add_new_user(self, user_data: dict):
         """
+        Retrieve a user's details by username.
+        """
+        operation = self.user_service['add_user']['operation']
+        params = {**{"op": operation}, **user_data}
+        return self.post(endpoint=self.endpoint, params=params)
+    
+    def get_user(self, user_id: dict):
+        """
         Add a new user to FileCloud.
         """
-        return self.post(self.endpoints["add_new_user"], data=user_data)
+        operation = self.user_service['get_user']['operation']
+        return self.post(endpoint=self.endpoint, params={"op": operation,"username": user_id})

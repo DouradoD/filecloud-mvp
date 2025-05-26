@@ -17,22 +17,24 @@ class File(BaseService):
         """
         Check if a file exists at the given path.
         """
-        return self.get(self.endpoints["file_exists"], params={"path": path})
+        return self.post(self.endpoints["file_exists"], params={"file": path})
 
     def upload_file(self, params: dict, files: dict):
         """
         Upload a file to FileCloud.
         """
-        return self.post(self.endpoints["upload_file"], params=params, files=files)
+        return self.post(self.endpoints["upload_file"], files=files, params=params) 
 
-    def delete_file(self, path: str, name: str):
+    def delete_file(self, path:str, name:str):
         """
         Delete a file from FileCloud.
         """
-        return self.post(self.endpoints["delete_file"], params={"path": path, "name": name})
+        return self.post(self.endpoints["delete_file"],
+                         params={"path": path,
+                                 "name": name})
 
     def get_file_info(self, params: dict):
         """
         Retrieve information about a file.
         """
-        return self.get(self.endpoints["get_file_info"], params=params)
+        return self.post(self.endpoints["get_file_info"], params=params)
